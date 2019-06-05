@@ -25,13 +25,22 @@ public class DateDeserializers
 {
     private final static HashSet<String> _classNames = new HashSet<String>();
     static {
-        Class<?>[] numberTypes = new Class<?>[] {
+    	Class<?>[] numberTypes = new Class[0];
+    	try {
+       numberTypes = new Class<?>[] {
             Calendar.class,
             GregorianCalendar.class,
             java.sql.Date.class,
             java.util.Date.class,
             Timestamp.class,
         };
+    	} catch (NoClassDefFoundError e) {
+    		 numberTypes = new Class<?>[] {
+    	            Calendar.class,
+    	            GregorianCalendar.class,
+    	            java.util.Date.class,
+    	};
+    	}
         for (Class<?> cls : numberTypes) {
             _classNames.add(cls.getName());
         }

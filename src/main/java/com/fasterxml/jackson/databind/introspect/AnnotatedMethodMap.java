@@ -52,7 +52,7 @@ public final class AnnotatedMethodMap
     public Iterator<AnnotatedMethod> iterator()
     {
         if (_methods == null) {
-            return Collections.emptyIterator();
+            return new ArrayList<AnnotatedMethod>().iterator();
         }
         return _methods.values().iterator();
     }
