@@ -28,7 +28,9 @@ public class DateDeserializers
 {
     private final static HashSet<String> _classNames = new HashSet<String>();
     static {
-        Class<?>[] numberTypes = new Class<?>[] {
+    	Class<?>[] numberTypes = new Class[0];
+    	try {
+        numberTypes = new Class<?>[] {
             Calendar.class,
             GregorianCalendar.class,
             java.sql.Date.class,
@@ -36,7 +38,16 @@ public class DateDeserializers
             Timestamp.class,
             TimeZone.class
         };
-        for (Class<?> cls : numberTypes) {
+        
+    	} catch (NoClassDefFoundError e) {
+    		numberTypes = new Class<?>[] {
+                Calendar.class,
+                GregorianCalendar.class,
+                java.util.Date.class,
+                TimeZone.class
+            };
+    	}
+    	for (Class<?> cls : numberTypes) {
             _classNames.add(cls.getName());
         }
     }
