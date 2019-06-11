@@ -19,16 +19,7 @@ public abstract class Java7Support
     private final static Java7Support IMPL;
     
     static {
-        Java7Support impl = null;
-        try {
-            Class<?> cls = Class.forName("com.fasterxml.jackson.databind.ext.Java7SupportImpl");
-            impl = (Java7Support) ClassUtil.createInstance(cls, false);
-        } catch (Throwable t) {
-            // 24-Nov-2015, tatu: Should we log or not?
-            java.util.logging.Logger.getLogger(Java7Support.class.getName())
-                .warning("Unable to load JDK7 types (annotations, java.nio.file.Path): no Java7 support added");
-        }
-        IMPL = impl;
+        IMPL = null;
     }
 
     public static Java7Support instance() {
