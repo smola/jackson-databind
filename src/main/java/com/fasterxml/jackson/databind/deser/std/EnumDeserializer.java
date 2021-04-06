@@ -1,7 +1,6 @@
 package com.fasterxml.jackson.databind.deser.std;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,6 +18,7 @@ import com.fasterxml.jackson.databind.type.LogicalType;
 import com.fasterxml.jackson.databind.util.ClassUtil;
 import com.fasterxml.jackson.databind.util.CompactStringObjectMap;
 import com.fasterxml.jackson.databind.util.EnumResolver;
+import com.fasterxml.jackson.databind.util.Objects;
 
 /**
  * Deserializer class that can deserialize instances of

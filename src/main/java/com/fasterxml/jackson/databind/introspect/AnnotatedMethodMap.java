@@ -48,11 +48,15 @@ public final class AnnotatedMethodMap
     /**********************************************************
      */
 
+    private final static List<AnnotatedMethod> EMPTY_LIST = Collections.emptyList();
+
     @Override
     public Iterator<AnnotatedMethod> iterator()
     {
         if (_methods == null) {
-            return Collections.emptyIterator();
+            // JDK 7+
+            // return Collections.emptyIterator();
+            return EMPTY_LIST.iterator();
         }
         return _methods.values().iterator();
     }

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.databind.cfg.HandlerInstantiator;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
+import com.fasterxml.jackson.databind.ext.Java6Support;
 import com.fasterxml.jackson.databind.ext.Java7Support;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.jsontype.TypeIdResolver;
@@ -69,7 +70,16 @@ public class JacksonAnnotationIntrospector
         } catch (Throwable t) { }
         _java7Helper = x;
     }
-    
+
+    private static final Java6Support _java6Helper;
+    static {
+        Java6Support x = null;
+        try {
+            x = Java6Support.instance();
+        } catch (Throwable t) { }
+        _java6Helper = x;
+    }
+
     /**
      * Since introspection of annotation types is a performance issue in some
      * use cases (rare, but do exist), let's try a simple cache to reduce
@@ -1366,8 +1376,8 @@ public class JacksonAnnotationIntrospector
          //    may or may not consider it a creator
          if (_cfgConstructorPropertiesImpliesCreator ) {
              if (a instanceof AnnotatedConstructor) {
-                 if (_java7Helper != null) {
-                     Boolean b = _java7Helper.hasCreatorAnnotation(a);
+                 if (_java6Helper != null) {
+                     Boolean b = _java6Helper.hasCreatorAnnotation(a);
                      if (b != null) {
                          return b.booleanValue();
                      }
@@ -1394,8 +1404,8 @@ public class JacksonAnnotationIntrospector
                 && config.isEnabled(MapperFeature.INFER_CREATOR_FROM_CONSTRUCTOR_PROPERTIES)
             ) {
             if (a instanceof AnnotatedConstructor) {
-                if (_java7Helper != null) {
-                    Boolean b = _java7Helper.hasCreatorAnnotation(a);
+                if (_java6Helper != null) {
+                    Boolean b = _java6Helper.hasCreatorAnnotation(a);
                     if ((b != null) && b.booleanValue()) {
                         // 13-Sep-2016, tatu: Judgment call, but I don't think JDK ever implies
                         //    use of delegate; assumes as-properties implicitly
@@ -1457,8 +1467,8 @@ public class JacksonAnnotationIntrospector
             AnnotatedWithParams ctor = p.getOwner();
 
             if (ctor != null) {
-                if (_java7Helper != null) {
-                    PropertyName name = _java7Helper.findConstructorName(p);
+                if (_java6Helper != null) {
+                    PropertyName name = _java6Helper.findConstructorName(p);
                     if (name != null) {
                         return name;
                     }

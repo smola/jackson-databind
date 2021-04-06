@@ -1,10 +1,9 @@
 package com.fasterxml.jackson.failing;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.*;
 
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.util.Objects;
 
 // [databind#2572]: "empty" setter, POJO with no 0-arg constructor
 public class AsEmptyPOJONoDefaultCtor2572Test extends BaseMapTest

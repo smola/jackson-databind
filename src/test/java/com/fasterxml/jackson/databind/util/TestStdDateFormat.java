@@ -10,11 +10,18 @@ import com.fasterxml.jackson.databind.BaseMapTest;
 public class TestStdDateFormat
     extends BaseMapTest
 {
+    // Deprecated and not compatible with JDK 6
+    // @SuppressWarnings("deprecation")
+    // public void testFactoryISO8601() {
+    //   TimeZone tz = TimeZone.getTimeZone("GMT");
+    //   Locale loc = Locale.US;
+    //    assertNotNull(StdDateFormat.getISO8601Format(tz, loc));
+    //}
+
     @SuppressWarnings("deprecation")
-    public void testFactories() {
+    public void testFactoryRFC1123() {
         TimeZone tz = TimeZone.getTimeZone("GMT");
         Locale loc = Locale.US;
-        assertNotNull(StdDateFormat.getISO8601Format(tz, loc));
         assertNotNull(StdDateFormat.getRFC1123Format(tz, loc));
     }
 

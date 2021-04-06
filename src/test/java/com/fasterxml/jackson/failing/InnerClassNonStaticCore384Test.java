@@ -3,10 +3,10 @@ package com.fasterxml.jackson.failing;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.testutil.NoCheckSubTypeValidator;
+import com.fasterxml.jackson.databind.util.Objects;
 
 // see [https://github.com/FasterXML/jackson-core/issues/384]: most likely
 // can not be fixed, but could we improve error message to indicate issue

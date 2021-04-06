@@ -2,7 +2,6 @@ package com.fasterxml.jackson.databind.deser.std;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,6 +13,7 @@ import com.fasterxml.jackson.databind.deser.impl.NullsConstantProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeDeserializer;
 import com.fasterxml.jackson.databind.type.LogicalType;
 import com.fasterxml.jackson.databind.util.AccessPattern;
+import com.fasterxml.jackson.databind.util.Objects;
 
 /**
  * Standard deserializer for {@link EnumSet}s.

@@ -6,12 +6,14 @@ import java.time.ZoneOffset;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
+import com.fasterxml.jackson.databind.util.IgnoreJRERequirement;
 
 // [databind#2683]: add fallback handling for Java 8 date/time types, to
 // prevent accidental serialization as POJOs, as well as give more information
 // on deserialization attempts
 //
 // @since 2.12
+@IgnoreJRERequirement
 public class DateJava8FallbacksTest extends BaseMapTest
 {
     private final ObjectMapper MAPPER = newJsonMapper();

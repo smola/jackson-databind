@@ -163,7 +163,10 @@ public final class AnnotatedMethod
     {
         try {
             _method.invoke(pojo, value);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException e) {
+            throw new IllegalArgumentException("Failed to setValue() with method "
+                    +getFullName()+": "+e.getMessage(), e);
+        } catch (InvocationTargetException e) {
             throw new IllegalArgumentException("Failed to setValue() with method "
                     +getFullName()+": "+e.getMessage(), e);
         }
@@ -174,9 +177,12 @@ public final class AnnotatedMethod
     {
         try {
             return _method.invoke(pojo, (Object[]) null);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException e) {
             throw new IllegalArgumentException("Failed to getValue() with method "
-                    +getFullName()+": "+e.getMessage(), e);
+                    + getFullName() + ": " + e.getMessage(), e);
+        } catch (InvocationTargetException e) {
+            throw new IllegalArgumentException("Failed to getValue() with method "
+                    + getFullName() + ": " + e.getMessage(), e);
         }
     }
 

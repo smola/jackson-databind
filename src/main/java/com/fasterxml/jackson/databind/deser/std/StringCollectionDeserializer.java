@@ -2,7 +2,6 @@ package com.fasterxml.jackson.databind.deser.std;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,6 +15,7 @@ import com.fasterxml.jackson.databind.deser.ValueInstantiator;
 import com.fasterxml.jackson.databind.introspect.AnnotatedWithParams;
 import com.fasterxml.jackson.databind.jsontype.TypeDeserializer;
 import com.fasterxml.jackson.databind.type.LogicalType;
+import com.fasterxml.jackson.databind.util.Objects;
 
 /**
  * Specifically optimized version for {@link java.util.Collection}s

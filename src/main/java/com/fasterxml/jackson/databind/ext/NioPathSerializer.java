@@ -11,10 +11,12 @@ import com.fasterxml.jackson.core.type.WritableTypeId;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import com.fasterxml.jackson.databind.ser.std.StdScalarSerializer;
+import com.fasterxml.jackson.databind.util.IgnoreJRERequirement;
 
 /**
  * @since 2.8
  */
+@IgnoreJRERequirement
 public class NioPathSerializer extends StdScalarSerializer<Path>
 {
     private static final long serialVersionUID = 1;

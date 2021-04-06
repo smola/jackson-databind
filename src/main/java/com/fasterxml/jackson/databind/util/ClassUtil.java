@@ -21,7 +21,9 @@ public final class ClassUtil
     private final static Annotation[] NO_ANNOTATIONS = new Annotation[0];
     private final static Ctor[] NO_CTORS = new Ctor[0];
 
-    private final static Iterator<?> EMPTY_ITERATOR = Collections.emptyIterator();
+    private final static List<?> EMPTY_LIST = Collections.emptyList();
+
+    private final static Iterator<?> EMPTY_ITERATOR = EMPTY_LIST.iterator();
 
     /*
     /**********************************************************
@@ -496,7 +498,8 @@ public final class ClassUtil
         try {
             g.close();
         } catch (Exception e) {
-            fail.addSuppressed(e);
+            // JDK 7+
+            // fail.addSuppressed(e);
         }
         throwIfIOE(fail);
         throwIfRTE(fail);
@@ -521,14 +524,16 @@ public final class ClassUtil
             try {
                 g.close();
             } catch (Exception e) {
-                fail.addSuppressed(e);
+                // JDK 7+
+                // fail.addSuppressed(e);
             }
         }
         if (toClose != null) {
             try {
                 toClose.close();
             } catch (Exception e) {
-                fail.addSuppressed(e);
+                // JDK 7+
+                // fail.addSuppressed(e);
             }
         }
         throwIfIOE(fail);
@@ -1224,7 +1229,8 @@ public final class ClassUtil
             try {
                 contextClass = loader.loadClass(cls.getName());
             } catch (ClassNotFoundException e) {
-                ex.addSuppressed(e);
+                // JDK 7+
+                // ex.addSuppressed(e);
                 return _failGetClassMethods(cls, ex);
             }
             try {

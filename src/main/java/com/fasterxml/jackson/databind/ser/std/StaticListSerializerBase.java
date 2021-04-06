@@ -3,7 +3,6 @@ package com.fasterxml.jackson.databind.ser.std;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.*;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -15,6 +14,7 @@ import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatVisitorWrapper;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
+import com.fasterxml.jackson.databind.util.Objects;
 
 /**
  * Intermediate base class for Lists, Collections and Arrays

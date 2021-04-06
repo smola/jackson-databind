@@ -1,6 +1,6 @@
 package com.fasterxml.jackson.databind.deser.jdk;
 
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
@@ -11,7 +11,7 @@ public class Base64DecodingTest extends BaseMapTest
 {
     private final ObjectMapper MAPPER = objectMapper();
 
-    private final byte[] HELLO_BYTES = "hello".getBytes(StandardCharsets.UTF_8);
+    private final byte[] HELLO_BYTES = "hello".getBytes(Charset.forName("UTF-8"));
     private final String BASE64_HELLO = "aGVsbG8=";
 
     // for [databind#1425]

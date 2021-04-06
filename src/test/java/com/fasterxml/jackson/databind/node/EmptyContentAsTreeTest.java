@@ -2,7 +2,7 @@ package com.fasterxml.jackson.databind.node;
 
 import java.io.ByteArrayInputStream;
 import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.TreeNode;
@@ -16,9 +16,9 @@ public class EmptyContentAsTreeTest extends BaseMapTest
     private final ObjectMapper MAPPER = objectMapper();
 
     private final String EMPTY0 = "";
-    private final byte[] EMPTY0_BYTES = EMPTY0.getBytes(StandardCharsets.UTF_8);
+    private final byte[] EMPTY0_BYTES = EMPTY0.getBytes(Charset.forName("UTF-8"));
     private final String EMPTY1 = "  \n\t  ";
-    private final byte[] EMPTY1_BYTES = EMPTY1.getBytes(StandardCharsets.UTF_8);
+    private final byte[] EMPTY1_BYTES = EMPTY1.getBytes(Charset.forName("UTF-8"));
 
     // [databind#1406]: when passing `JsonParser`, indicate lack of content
     // by returning `null`

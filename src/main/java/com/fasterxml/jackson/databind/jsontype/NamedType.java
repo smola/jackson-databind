@@ -1,6 +1,6 @@
 package com.fasterxml.jackson.databind.jsontype;
 
-import java.util.Objects;
+import com.fasterxml.jackson.databind.util.Objects;
 
 /**
  * Simple container class for types with optional logical name, used

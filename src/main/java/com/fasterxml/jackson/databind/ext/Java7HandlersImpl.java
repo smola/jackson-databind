@@ -4,10 +4,12 @@ import java.nio.file.Path;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.util.IgnoreJRERequirement;
 
 /**
  * @since 2.10
  */
+@IgnoreJRERequirement
 public class Java7HandlersImpl extends Java7Handlers
 {
     private final Class<?> _pathClass;

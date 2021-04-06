@@ -14,12 +14,14 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdScalarDeserializer;
+import com.fasterxml.jackson.databind.util.IgnoreJRERequirement;
 
 import static java.lang.Character.isLetter;
 
 /**
  * @since 2.8
  */
+@IgnoreJRERequirement
 public class NioPathDeserializer extends StdScalarDeserializer<Path>
 {
     private static final long serialVersionUID = 1;

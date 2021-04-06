@@ -369,6 +369,91 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>jdk6</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>net.orfjackal.retrolambda</groupId>
+            <artifactId>retrolambda-maven-plugin</artifactId>
+            <version>2.5.7</version>
+            <configuration>
+              <target>1.6</target>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>process-main</goal>
+                  <goal>process-test</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>animal-sniffer-maven-plugin</artifactId>
+            <version>1.20</version>
+            <configuration>
+              <signature>
+                <groupId>org.codehaus.mojo.signature</groupId>
+                <artifactId>java16</artifactId>
+                <version>1.1</version>
+              </signature>
+              <checkTestClasses>true</checkTestClasses>
+              <annotations>com.fasterxml.jackson.databind.util.IgnoreJRERequirement</annotations>
+              <ignores>java.time.OffsetDateTime</ignores>
+            </configuration>
+            <executions>
+              <execution>
+                <id>check-jdk6-classes</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>check-jdk6-test-classes</id>
+                <phase>process-test-classes</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <version>${version.plugin.surefire}</version>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <excludes>
+                <exclude>com/fasterxml/jackson/failing/*.java</exclude>
+                <exclude>**/*Java7*.java</exclude>
+                <exclude>**/*Java8*.java</exclude>
+                <exclude>com/fasterxml/jackson/databind/introspect/TransientTest.java</exclude>
+                <!-- JDK6-compatible javassist version has a bug with PowerMock: ConcurrentModificationException -->
+                <exclude>com/fasterxml/jackson/databind/type/TestTypeFactoryWithClassLoader.java</exclude>
+                <!-- Uses date format (Z) not supported in JDK 6 -->
+                <exclude>com/fasterxml/jackson/databind/deser/jdk/DateDeserializationTZTest.java</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+            <version>2.6</version>
+          </dependency>
+          <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.23.1-GA</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
+    </profile>
   </profiles>
 
 </project>

@@ -101,8 +101,10 @@ public class DefaultBaseTypeLimitingValidator
             UNSAFE.add(Object.class.getName());
             UNSAFE.add(java.io.Closeable.class.getName());
             UNSAFE.add(java.io.Serializable.class.getName());
-            UNSAFE.add(AutoCloseable.class.getName());
             UNSAFE.add(Cloneable.class.getName());
+
+            // missing in JDK 6
+            UNSAFE.add("java.lang.AutoCloseable");
 
             // and then couple others typically included in JDK, but that we
             // prefer not adding direct reference to

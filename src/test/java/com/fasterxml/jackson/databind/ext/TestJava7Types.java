@@ -6,7 +6,9 @@ import java.nio.file.Paths;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.ObjectMapper.DefaultTyping;
 import com.fasterxml.jackson.databind.testutil.NoCheckSubTypeValidator;
+import com.fasterxml.jackson.databind.util.IgnoreJRERequirement;
 
+@IgnoreJRERequirement
 public class TestJava7Types extends BaseMapTest
 {
     public void testPathRoundtrip() throws Exception

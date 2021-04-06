@@ -2,7 +2,6 @@ package com.fasterxml.jackson.databind.ser.impl;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -18,6 +17,7 @@ import com.fasterxml.jackson.databind.ser.ContainerSerializer;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
 import com.fasterxml.jackson.databind.ser.std.ArraySerializerBase;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.fasterxml.jackson.databind.util.Objects;
 
 /**
  * Standard serializer used for <code>String[]</code> values.

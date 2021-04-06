@@ -1,11 +1,10 @@
 package com.fasterxml.jackson.failing;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.*;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.exc.ValueInstantiationException;
+import com.fasterxml.jackson.databind.util.Objects;
 
 // For [databind#1921]: Creator method not used when merging even if there is
 // no feasible alternative. Unclear whether this can even theoretically be

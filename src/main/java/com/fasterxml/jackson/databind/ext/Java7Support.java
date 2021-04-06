@@ -24,7 +24,7 @@ public abstract class Java7Support
         } catch (Throwable t) {
             // 09-Sep-2019, tatu: Used to log earlier, but with 2.10.0 let's not log
 //            java.util.logging.Logger.getLogger(Java7Support.class.getName())
-//                .warning("Unable to load JDK7 annotations (@ConstructorProperties, @Transient): no Java7 annotation support added");
+//                .warning("Unable to load JDK7 annotations (@Transient): no Java7 annotation support added");
         }
         IMPL = impl;
     }
@@ -35,7 +35,4 @@ public abstract class Java7Support
     
     public abstract Boolean findTransient(Annotated a);
 
-    public abstract Boolean hasCreatorAnnotation(Annotated a);
-
-    public abstract PropertyName findConstructorName(AnnotatedParameter p);
 }

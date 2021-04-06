@@ -1,10 +1,9 @@
 package com.fasterxml.jackson.failing;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.*;
 
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.util.Objects;
 
 // Not sure if [databind#2572] is actually a bug, but behavior in 2.9 was
 // different from 2.10 in that no exception thrown and databind quietly just
